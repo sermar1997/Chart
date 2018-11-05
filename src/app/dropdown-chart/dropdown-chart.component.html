@@ -1,0 +1,13 @@
+<!-- <div class="form-group">
+    <label for="Chart">Choose one type of Chart to show data</label>
+    <select class="form-control" id="chart" [(ngModel)]="selectedChart" name="dropdown" #chart="ngModel" (ngModelChange)="onChangeChart()">
+      <option *ngFor="let chart of charts" [ngValue]="chart">{{chart.name}}</option>
+    </select>
+  </div> -->
+<mat-form-field>
+  <mat-select placeholder="Choose a chart" [(ngModel)]="selectedChart" (ngModelChange)="onChangeChart()">
+    <mat-option *ngFor="let chart of charts" [value]="chart">
+      {{chart.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
