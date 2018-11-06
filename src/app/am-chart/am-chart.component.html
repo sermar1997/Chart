@@ -1,0 +1,15 @@
+<div class="shadow" *ngIf="showCanvas" [ngSwitch]="type">
+  <app-barchart *ngSwitchCase="'bar'" [excelData]="excel"></app-barchart>
+  <app-doughnutchart *ngSwitchCase="'doughnut'" [excelData]="excel"></app-doughnutchart>
+  <app-linechart *ngSwitchCase="'line'" [excelData]="excel">
+  </app-linechart>
+  <app-piechart *ngSwitchCase="'pie'" [excelData]="excel"></app-piechart>
+  <app-radarchart *ngSwitchCase="'radar'" [excelData]="excel"></app-radarchart>
+  <app-polarchart *ngSwitchCase="'polarArea'" [excelData]="excel"></app-polarchart>
+
+  <app-funnelchart *ngSwitchCase="'funnel'" [excelData]="excel"></app-funnelchart>
+  <app-ganttchart *ngSwitchCase="'gantt'" [excelData]="excel"></app-ganttchart>
+  <app-stackedareachart *ngSwitchCase="'stackedarea'" [excelData]="excel"></app-stackedareachart>
+  <app-three-dbarchart *ngSwitchCase="'horizontalbar'" [excelData]="excel"></app-three-dbarchart>
+  <app-montecarlo *ngSwitchCase="'montecarlo'" [excelData]="excel"></app-montecarlo>
+</div>

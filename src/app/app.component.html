@@ -1,13 +1,19 @@
 <header class="header">
     <mat-toolbar color="primary">{{title}}</mat-toolbar>
+    <app-alert></app-alert>
 </header>
 <div class="container">
     <div class="row">
-        <!-- <div class="col-lg-6 col-md-12">
-            <app-excelreader (fileUploaded)="fileUploaded($event)"></app-excelreader>
-        </div> -->
+        <div class="col-lg-6 col-md-12">
+            <app-excelreader (fileUploaded)="fileUploaded($event)" (showAlarm)="showAlarm($event)"></app-excelreader>
+        </div>
         <div class="col-lg-6 col-md-12">
             <app-dropdown-chart (chartTypeChanged)="chartTypeChanged($event)"></app-dropdown-chart>
         </div>
     </div>
+    <div class="row">
+            <div class="col">
+                <app-am-chart [type]="chartType" [excel]="jSonSheet"></app-am-chart>
+            </div>
+        </div>
 </div>
