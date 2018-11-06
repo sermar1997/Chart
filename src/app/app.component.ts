@@ -52,32 +52,33 @@ export class AppComponent {
   }
   chartTypeChanged(dropdownChart) {
     this.chartType = dropdownChart.type;
-    console.log(this.chartType)
-    //if we've got an excel file
-    if (this.excel.file) {
-      if (this.excel.checkFile()) {
-        //show chart component
-        if (!this.amChart.showCanvas) {
-          if (!this.alertComponent.closed)
-            this.alertComponent.changeVisibility(this.alertComponent.closed);
-          this.amChart.changeCanvasVisibility(this.amChart.showCanvas);
-        }
-        if (this.chartType === "montecarlo") {
-          this.amChart.excel = this.file;
+    if (this.file) {
+      //if we've got an excel file
+      if (this.excel.file) {
+        if (this.excel.checkFile()) {
+          //show chart component
+          if (!this.amChart.showCanvas) {
+            if (!this.alertComponent.closed)
+              this.alertComponent.changeVisibility(this.alertComponent.closed);
+            this.amChart.changeCanvasVisibility(this.amChart.showCanvas);
+          }
+          if (this.chartType === "montecarlo") {
+            this.amChart.excel = this.file;
+          } else {
+            this.amChart.excel = XLSX.utils.sheet_to_json(this.file, {
+              raw: true
+            });
+          }
         } else {
-          this.amChart.excel = XLSX.utils.sheet_to_json(this.file, {
-            raw: true
-          });
+          this.showAlarm(
+            "You have to upload an excel file to show " +
+              dropdownChart.name +
+              " data"
+          );
         }
       } else {
-        this.showAlarm(
-          "You have to upload an excel file to show " +
-            dropdownChart.name +
-            " data"
-        );
+        this.fileUploaded(this.file);
       }
-    } else {
-      this.fileUploaded(this.file);
     }
   }
   showAlarm(message) {
